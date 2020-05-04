@@ -37,6 +37,39 @@ public class ITS_TBL_Candidate {
 		this.experience = experience;
 		this.qualification = qualification;
 	}
+	
+	
+	public ITS_TBL_Candidate(String primarySkills, String qualification,int experience) {
+		super();
+		this.primarySkills = primarySkills;
+		this.qualification = qualification;
+		this.experience=experience;
+	}
+
+
+
+
+
+
+	public ITS_TBL_Candidate(long candidateId, String primarySkills, String secondarySkills, int experience,
+			String qualification, String designation, int noticePeriod, String location, int shareDetails) {
+		super();
+		this.candidateId = candidateId;
+		this.primarySkills = primarySkills;
+		this.secondarySkills = secondarySkills;
+		this.experience = experience;
+		this.qualification = qualification;
+		this.designation = designation;
+		this.noticePeriod = noticePeriod;
+		this.location = location;
+		this.shareDetails = shareDetails;
+	}
+
+
+
+
+
+
 	public void setCandidateId(long candidateId) {
 		this.candidateId = candidateId;
 	}

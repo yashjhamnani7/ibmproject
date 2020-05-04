@@ -12,12 +12,25 @@ import com.spring.json.*;
 
 public class UserProfileUtils {
 
-	///public static List<ITS_TBL_Candidate> convertUserEntityListToUserList(List<ITS_TBL_Candidate_Entity> candidateEntityList) {
-		///final List<ITS_TBL_Candidate> candidateList = new ArrayList<ITS_TBL_Candidate>();
-		//Consumer<ITS_TBL_Candidate_Entity> consumer = (ITS_TBL_Candidate_Entity candidateEntity)->candidateList.add(convertCandidateProfileEntityToCandidateProfile(candidateEntity));
-		//candidateEntityList.stream().forEach(consumer);
-		//return candidateList;
-	//}
+	public static List<ITS_TBL_Candidate> convertUserEntityListToUserList(List<ITS_TBL_Candidate_Entity> candidateEntityList) {
+		final List<ITS_TBL_Candidate> candidateList = new ArrayList<ITS_TBL_Candidate>();
+		Consumer<ITS_TBL_Candidate_Entity> consumer = (ITS_TBL_Candidate_Entity candidateEntity)->candidateList.add(convertCandidateProfileEntityToCandidateProfile(candidateEntity));
+		
+		
+		//consumer=((ITS_TBL_Candidate_Entity candidateEntity)->candidateList.add(convertCandidateProfileEntityToUserProfile(candidateEntity)));
+		candidateEntityList.stream().forEach(consumer);
+		return candidateList;
+	}
+
+	
+
+public static ITS_TBL_Candidate convertCandidateProfileEntityToCandidateProfile(ITS_TBL_Candidate_Entity candidateProfile)
+{
+	
+	return new ITS_TBL_Candidate(candidateProfile.getCandidateId(),candidateProfile.getPrimarySkills(),candidateProfile.getSecondarySkills(),candidateProfile.getExperience(),
+			candidateProfile.getQualification(),candidateProfile.getDesignation(),candidateProfile.getNoticePeriod(),
+			candidateProfile.getLocation(),candidateProfile.getShareDetails());
+}
 	
 	public static ITS_TBL_User_Profile_Entity convertUserProfileToUserProfileEntity(ITS_TBL_Candidate userProfile) {
 		return new ITS_TBL_User_Profile_Entity(userProfile.getFirstName(),userProfile.getLastName(),userProfile.getDateOfBirth(),userProfile.getGender(),userProfile.getStreet(),userProfile.getLocation()

@@ -1,6 +1,7 @@
 package com.spring.service;
 import com.spring.json.ITS_TBL_Candidate;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,10 +44,16 @@ UserProfileRepository userprofilerepo;
 		//return UserProfileUtils.convertCandidateProfileEntityToCandidateProfile(candidateProfileEntity);*/
 	}
 
-	//public ITS_TBL_Candidate  search(ITS_TBL_Candidate  candidateProfile)
-	//{
-		
-//	}
+	public List<ITS_TBL_Candidate>  search(ITS_TBL_Candidate  candidateProfile)
+	{
+	 String qualification=candidateProfile.getQualification();
+	 String skills=candidateProfile.getPrimarySkills();
+	 int experience=candidateProfile.getExperience();
+	 List<ITS_TBL_Candidate_Entity> listcan=candidateprofilerepo.findByQualificationAndPrimarySkillsAndExperience(qualification, skills,experience);
+	 
+	 return UserProfileUtils.convertUserEntityListToUserList(listcan);
+
+	}
 
 
 
