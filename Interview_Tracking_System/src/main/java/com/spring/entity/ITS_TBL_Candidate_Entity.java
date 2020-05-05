@@ -53,18 +53,24 @@ public class ITS_TBL_Candidate_Entity{
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="candidateEntity")
 	private List<ITS_TBL_Interview_Schedule_Entity> interviewScheduleList;
 	
-	@OneToOne(cascade={CascadeType.PERSIST})
-    private ITS_TBL_User_Profile_Entity user;
+	@OneToOne(mappedBy="user")
+	ITS_TBL_User_Profile_Entity candidate;
 	
 	
 	
-	public ITS_TBL_User_Profile_Entity getUser() {
-		return user;
+	public ITS_TBL_User_Profile_Entity getCandidate()
+	{
+		return candidate;
 	}
 
-	public void setUser(ITS_TBL_User_Profile_Entity user) {
-		this.user = user;
+	
+
+	public void setCandidate(ITS_TBL_User_Profile_Entity candidate)
+	{
+		this.candidate = candidate;
 	}
+
+
 
 	public ITS_TBL_Candidate_Entity() {}
 	

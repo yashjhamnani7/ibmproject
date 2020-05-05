@@ -76,6 +76,7 @@ public class AdminServiceImpl implements AdminService {
 			long id= candidateEntity.getCandidateId();
 			ITS_TBL_User_Profile_Entity userProfileEntity=UserProfileUtils.convertUserProfileToUserProfileEntity(candidateProfile);
 			userProfileEntity.setCandidateId(id);
+			userProfileEntity.setUser(userProfileEntity);
 			ITS_TBL_User_Profile_Entity user=userprofilerepo.save(userProfileEntity);
 			//ITS_TBL_User_Profile_Entity userProfileEntity=userprofilerepo.save(UserProfileUtils.convertUserProfileToUserProfileEntity(candidateProfile));
 			ITS_TBL_Candidate its_candidate=UserProfileUtils.convertEntityToJson(candidateEntity,user);

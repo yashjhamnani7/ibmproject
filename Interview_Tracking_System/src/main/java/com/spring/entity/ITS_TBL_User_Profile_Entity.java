@@ -31,28 +31,26 @@ public class ITS_TBL_User_Profile_Entity implements Serializable {
 		return candidateId;
 	}
 
+	
 
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "candidate_id", referencedColumnName="CANDIDATEID")
+    private ITS_TBL_User_Profile_Entity user;
+	
 
 
 	public void setCandidateId(long candidateId) {
 		this.candidateId = candidateId;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CANDIDATEID", referencedColumnName="CANDIDATEID")
-    private ITS_TBL_Candidate_Entity candidateDetail;
-	
-	public ITS_TBL_Candidate_Entity getCandidateDetail() {
-		return candidateDetail;
+	public ITS_TBL_User_Profile_Entity getUser() {
+		return user;
+	}
+	public void setUser(ITS_TBL_User_Profile_Entity user) {
+		this.user = user;
 	}
 
 
-
-
-	public void setCandidateDetail(ITS_TBL_Candidate_Entity candidateDetail)
-	{
-		this.candidateDetail = candidateDetail;
-	}
 
 	@Column(name="FIRSTNAME")
 	private String firstName;
@@ -82,7 +80,7 @@ public class ITS_TBL_User_Profile_Entity implements Serializable {
 			String lastName, LocalDate dateOfBirth, String gender, String street, String location, String city,
 			String state, String pincode, String mobileNo, String emailId,ITS_TBL_Candidate_Entity candidateDetail) {
 		super();
-		this.candidateDetail = candidateDetail;
+		
 	
 		this.firstName = firstName;
 		this.lastName = lastName;
